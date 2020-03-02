@@ -5,7 +5,7 @@ public class PuzzleBFS {
 
     private Queue<Puzzle> tree = new LinkedList<Puzzle>();
 
-    public Puzzle solve(Puzzle puzzle, Puzzle.DIRECTION[] strategy) throws CloneNotSupportedException {
+    public Puzzle solve(Puzzle puzzle, Puzzle.DIRECTION[] strategy) {
         tree.add(puzzle);
 
         while(!tree.isEmpty()){
