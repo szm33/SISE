@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.List;
 
 public class Puzzle{
     public enum DIRECTION {UP, DOWN, LEFT, RIGHT}
@@ -29,6 +30,16 @@ public class Puzzle{
         this.puzzle = puzzle;
         //this.correct = correct;
         zeroPosition();
+    }
+
+    public boolean inList(List<int[][]> puzzeles){
+        for (int[][] puzzle : puzzeles
+             ) {
+            if(Arrays.deepEquals(puzzle,this.puzzle)){
+                return true;
+            }
+        }
+        return false;
     }
 
     public void move(DIRECTION direction){

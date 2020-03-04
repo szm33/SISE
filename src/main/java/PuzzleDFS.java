@@ -1,4 +1,4 @@
-public class PuzzleDFS {
+public class PuzzleDFS implements Solver{
 
     private Puzzle.DIRECTION[] strategy;
 
@@ -6,7 +6,11 @@ public class PuzzleDFS {
         this.strategy = strategy;
     }
 
-    public Puzzle solve(Puzzle puzzle, int invokations){
+    public Puzzle solve(Puzzle puzzle){
+        return dfs(puzzle, 0);
+    }
+
+    public Puzzle dfs(Puzzle puzzle, int invokations){
 
             if(puzzle.isCorrect()){
                 return puzzle;
@@ -18,7 +22,7 @@ public class PuzzleDFS {
                 if(puzzle.canMove(strategy[i])){
                     Puzzle nextStepPuzzle = new Puzzle(puzzle);
                     nextStepPuzzle.move(strategy[i]);
-                    Puzzle solution = solve(nextStepPuzzle, invokations+ 1);
+                    Puzzle solution = dfs(nextStepPuzzle, invokations+ 1);
                     if(solution != null){
                         return solution;
                     }

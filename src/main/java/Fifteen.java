@@ -1,9 +1,15 @@
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
 public class Fifteen {
 
+
+
     public static void main(String[] args) {
+        PuzzleHamm hamm = new PuzzleHamm();
         PuzzleLoader loader = new PuzzleLoader();
         PuzzleSaver saver = new PuzzleSaver();
-        Puzzle puzzle = new Puzzle(loader.load("C:\\Users\\SzymonDobrowolski\\Desktop\\SISE\\4x4_09_00121.txt"));
+        Puzzle puzzle = new Puzzle(loader.load("C:\\Users\\SzymonDobrowolski\\Desktop\\SISE\\4x4_09_00191.txt"));
         System.out.println(puzzle);
 //        if(puzzle.canMove(Puzzle.DIRECTION.DOWN)){
 //            puzzle.move(Puzzle.DIRECTION.DOWN);
@@ -12,10 +18,11 @@ public class Fifteen {
 //        if(puzzle.isCorrect()){
 //            System.out.println("Brawo udalo sie");
 //        }
-        PuzzleBFS bfs = new PuzzleBFS();
         Puzzle.DIRECTION[] strategy = {Puzzle.DIRECTION.LEFT, Puzzle.DIRECTION.DOWN, Puzzle.DIRECTION.UP, Puzzle.DIRECTION.RIGHT};
+        PuzzleBFS bfs = new PuzzleBFS(strategy);
         PuzzleDFS dfs = new PuzzleDFS(strategy);
-        Puzzle solvedPuzzle = dfs.solve(puzzle,0);
+        Solver solver = hamm;
+        Puzzle solvedPuzzle = solver.solve(puzzle);
         //Puzzle solvedPuzzle = bfs.solve(puzzle, strategy);
         System.out.println(solvedPuzzle);
         System.out.println(solvedPuzzle.getPath());

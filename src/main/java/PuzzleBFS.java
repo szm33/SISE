@@ -1,11 +1,18 @@
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class PuzzleBFS {
+public class PuzzleBFS implements Solver{
 
     private Queue<Puzzle> tree = new LinkedList<Puzzle>();
 
-    public Puzzle solve(Puzzle puzzle, Puzzle.DIRECTION[] strategy) {
+    private Puzzle.DIRECTION[] strategy;
+
+    public PuzzleBFS(Puzzle.DIRECTION[] strategy){
+        this.strategy = strategy;
+    }
+
+
+    public Puzzle solve(Puzzle puzzle) {
         tree.add(puzzle);
 
         while(!tree.isEmpty()){
