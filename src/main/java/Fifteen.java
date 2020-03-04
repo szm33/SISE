@@ -1,7 +1,3 @@
-import org.apache.commons.math3.util.Precision;
-
-import java.util.Comparator;
-import java.util.PriorityQueue;
 
 public class Fifteen {
 
@@ -56,7 +52,6 @@ public class Fifteen {
         Puzzle solvedPuzzle = solver.solve(puzzle);
         long endTime = System.nanoTime();
         double duration = (endTime - startTime)/1000000.0;
-        duration = Precision.round(duration,3);
         if(solvedPuzzle == null){
             solver.setSolutionLength(-1);
         }
