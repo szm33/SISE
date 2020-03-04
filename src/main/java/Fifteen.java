@@ -6,7 +6,8 @@ public class Fifteen {
 
 
     public static void main(String[] args) {
-        PuzzleHamm hamm = new PuzzleHamm();
+        PuzzleAstar hamm = new PuzzleHamm();
+        PuzzleAstar manh = new PuzzleManh();
         PuzzleLoader loader = new PuzzleLoader();
         PuzzleSaver saver = new PuzzleSaver();
         Puzzle puzzle = new Puzzle(loader.load("C:\\Users\\SzymonDobrowolski\\Desktop\\SISE\\4x4_09_00191.txt"));
@@ -21,7 +22,7 @@ public class Fifteen {
         Puzzle.DIRECTION[] strategy = {Puzzle.DIRECTION.LEFT, Puzzle.DIRECTION.DOWN, Puzzle.DIRECTION.UP, Puzzle.DIRECTION.RIGHT};
         PuzzleBFS bfs = new PuzzleBFS(strategy);
         PuzzleDFS dfs = new PuzzleDFS(strategy);
-        Solver solver = hamm;
+        Solver solver = manh;
         Puzzle solvedPuzzle = solver.solve(puzzle);
         //Puzzle solvedPuzzle = bfs.solve(puzzle, strategy);
         System.out.println(solvedPuzzle);
