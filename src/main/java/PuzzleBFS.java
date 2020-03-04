@@ -1,7 +1,7 @@
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class PuzzleBFS implements Solver{
+public class PuzzleBFS extends Solver{
 
     private Queue<Puzzle> tree = new LinkedList<Puzzle>();
 
@@ -18,6 +18,10 @@ public class PuzzleBFS implements Solver{
         while(!tree.isEmpty()){
             Puzzle puzzleToCheck = tree.poll();
 
+            visitedStates ++ ;
+            if(puzzleToCheck.getPath().length() > maxDepth){
+                maxDepth = puzzleToCheck.getPath().length();
+            }
             if(puzzleToCheck.isCorrect()){
                 return puzzleToCheck;
             }

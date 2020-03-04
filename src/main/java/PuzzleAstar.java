@@ -3,13 +3,12 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
 
-public abstract class PuzzleAstar implements Solver{
+public abstract class PuzzleAstar extends Solver{
     private List<int[][]> previousSteps = new LinkedList<int[][]>();
 
     private Puzzle.DIRECTION[] strategy = {Puzzle.DIRECTION.LEFT, Puzzle.DIRECTION.DOWN, Puzzle.DIRECTION.UP, Puzzle.DIRECTION.RIGHT};
 
     private PriorityQueue<Puzzle> tree = new PriorityQueue<Puzzle>(200, new Comparator<Puzzle>() {
-        @Override
         public int compare(Puzzle o1, Puzzle o2) {
             int d1 = distance(o1.getPuzzle()) + o1.getPath().length();
             int d2 = distance(o2.getPuzzle()) + o2.getPath().length();
@@ -31,6 +30,10 @@ public abstract class PuzzleAstar implements Solver{
         while(!tree.isEmpty()){
             Puzzle puzzleToCheck = tree.poll();
 
+            visitedStates ++;
+            if(puzzleToCheck.getPath().length() > maxDepth){
+                maxDepth = puzzleToCheck.getPath().length();
+            }
             if(puzzleToCheck.isCorrect()){
                 return puzzleToCheck;
             }
