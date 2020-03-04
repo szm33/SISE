@@ -2,6 +2,7 @@ public class Fifteen {
 
     public static void main(String[] args) {
         PuzzleLoader loader = new PuzzleLoader();
+        PuzzleSaver saver = new PuzzleSaver();
         Puzzle puzzle = new Puzzle(loader.load("C:\\Users\\SzymonDobrowolski\\Desktop\\SISE\\4x4_09_00121.txt"));
         System.out.println(puzzle);
 //        if(puzzle.canMove(Puzzle.DIRECTION.DOWN)){
@@ -20,7 +21,7 @@ public class Fifteen {
         System.out.println(solvedPuzzle.getPath());
         if (solvedPuzzle.isCorrect()) {
             System.out.println("Brawo udalo sie");
-
+            saver.save("C:\\Users\\SzymonDobrowolski\\Desktop\\SISE\\answer.txt",solvedPuzzle);
 
         }
     }
