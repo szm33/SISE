@@ -30,9 +30,9 @@ public abstract class PuzzleAstar extends Solver{
         while(!tree.isEmpty()){
             Puzzle puzzleToCheck = tree.poll();
 
-            visitedStates ++;
-            if(puzzleToCheck.getPath().length() > maxDepth){
-                maxDepth = puzzleToCheck.getPath().length();
+            setVisitedStates(getVisitedStates() + 1);
+            if(puzzleToCheck.getPath().length() > getMaxDepth()){
+                setMaxDepth(puzzleToCheck.getPath().length());
             }
             if(puzzleToCheck.isCorrect()){
                 return puzzleToCheck;

@@ -1,5 +1,11 @@
 public abstract class Solver {
 
+    private int solutionLength = 0;
+    private int visitedStates = 0;
+    private int proccesedStates = 0;
+    private int maxDepth = 0;
+    private double time = 0;
+
     public int getSolutionLength() {
         return solutionLength;
     }
@@ -39,12 +45,6 @@ public abstract class Solver {
     public void setTime(double time) {
         this.time = time;
     }
-
-    int solutionLength = 0;
-     int visitedStates = 0;
-     int proccesedStates = 0;
-     int maxDepth = 0;
-     double time = 0;
 
     public abstract Puzzle solve(Puzzle puzzle);
 }

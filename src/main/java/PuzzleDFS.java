@@ -12,9 +12,9 @@ public class PuzzleDFS extends Solver {
 
     public Puzzle dfs(Puzzle puzzle, int invokations) {
 
-        visitedStates++;
-        if(puzzle.getPath().length() > maxDepth){
-            maxDepth = puzzle.getPath().length();
+        setVisitedStates(getVisitedStates() + 1);
+        if(puzzle.getPath().length() > getMaxDepth()){
+            setMaxDepth(puzzle.getPath().length());
         }
         if(puzzle.isCorrect()){
             return puzzle;
